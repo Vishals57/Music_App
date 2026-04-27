@@ -59,6 +59,16 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
+                        Text('Error: $_error', style: const TextStyle(color: Colors.white)),
+                        ElevatedButton(
+                          onPressed: _loadData,
+                          child: const Text('Retry'),
+                        ),
+                      ],
+                    ),
+                  )
+                : const Text('Content will go here'),
+                      children: [
                         const Icon(Icons.error_outline,
                             size: 48, color: AppTheme.primaryColor),
                         const SizedBox(height: 16),
