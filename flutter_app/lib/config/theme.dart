@@ -19,14 +19,13 @@ class AppTheme {
       elevation: 0,
       centerTitle: true,
     ),
-    colorScheme: ColorScheme.dark(
+    colorScheme: const ColorScheme.dark(
       primary: primaryColor,
       secondary: accentColor,
       surface: surfaceColor,
-      background: backgroundColor,
       error: errorColor,
     ),
-    textTheme: TextTheme(
+    textTheme: const TextTheme(
       displayLarge: TextStyle(
         fontSize: 32,
         fontWeight: FontWeight.bold,
@@ -67,9 +66,9 @@ class AppTheme {
         borderRadius: BorderRadius.circular(8),
         borderSide: BorderSide.none,
       ),
-      hintStyle: TextStyle(color: textSecondary),
+      hintStyle: const TextStyle(color: textSecondary),
     ),
-    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
       backgroundColor: surfaceColor,
       selectedItemColor: primaryColor,
       unselectedItemColor: textSecondary,

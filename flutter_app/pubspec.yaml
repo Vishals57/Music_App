@@ -26,6 +26,7 @@ dependencies:
   
   # Audio & Media
   just_audio: ^0.9.31
+  just_audio_windows: ^0.2.2
   audio_video_progress_bar: ^0.10.0
   
   # Storage

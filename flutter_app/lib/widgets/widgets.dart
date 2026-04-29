@@ -3,13 +3,14 @@ import 'package:flutter/material.dart';
 // Audio Visualizer Widget
 class AudioVisualizer extends StatefulWidget {
   final Stream<List<int>> audioStream;
-  const AudioVisualizer({required this.audioStream});
+  const AudioVisualizer({super.key, required this.audioStream});
 
   @override
   State<AudioVisualizer> createState() => _AudioVisualizerState();
 }
 
-class _AudioVisualizerState extends State<AudioVisualizer> with TickerProviderStateMixin {
+class _AudioVisualizerState extends State<AudioVisualizer>
+    with TickerProviderStateMixin {
   late AnimationController _controller;
   List<double> bars = List.filled(20, 0.0);
 
@@ -43,12 +44,12 @@ class _AudioVisualizerState extends State<AudioVisualizer> with TickerProviderSt
               height: 20 + (60 * (0.5 + 0.5 * (index % 2))),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(2),
-                gradient: LinearGradient(
+                gradient: const LinearGradient(
                   begin: Alignment.bottomCenter,
                   end: Alignment.topCenter,
                   colors: [
-                    const Color(0xFF1DB954),
-                    const Color(0xFF1ED760),
+                    Color(0xFF1DB954),
+                    Color(0xFF1ED760),
                   ],
                 ),
               ),
@@ -70,6 +71,7 @@ class TrackCard extends StatelessWidget {
   final bool isFavorite;
 
   const TrackCard({
+    super.key,
     required this.title,
     required this.artist,
     required this.thumbnail,
@@ -115,8 +117,8 @@ class TrackCard extends StatelessWidget {
                     onTap: onFavorite,
                     child: Container(
                       padding: const EdgeInsets.all(8),
-                      decoration: BoxDecoration(
-                        color: const Color(0xFF1DB954),
+                      decoration: const BoxDecoration(
+                        color: Color(0xFF1DB954),
                         shape: BoxShape.circle,
                       ),
                       child: Icon(
@@ -174,6 +176,7 @@ class MiniPlayer extends StatelessWidget {
   final VoidCallback onTap;
 
   const MiniPlayer({
+    super.key,
     required this.title,
     required this.artist,
     required this.thumbnail,

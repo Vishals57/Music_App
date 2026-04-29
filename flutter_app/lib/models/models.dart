@@ -23,18 +23,32 @@ class Track {
 
   factory Track.fromJson(Map<String, dynamic> json) {
     return Track(
-      id: json['_id'] ?? json['id'],
-      title: json['title'],
-      artist: json['artist'],
+      id: (json['_id'] ?? json['id'] ?? json['trackId'] ?? '').toString(),
+      title: json['title'] ?? json['trackName'] ?? 'Unknown',
+      artist: json['artist'] ?? json['artistName'] ?? 'Unknown Artist',
       album: json['album'] ?? 'Unknown Album',
-      thumbnail: json['thumbnail'] ?? '',
-      url: json['url'] ?? '',
+      thumbnail: json['thumbnail'] ?? json['artwork'] ?? '',
+      url: json['url'] ?? json['previewUrl'] ?? '',
       duration: json['duration'] ?? 0,
-      source: json['source'] ?? 'youtube',
-      releaseDate: json['releaseDate'] != null 
-        ? DateTime.parse(json['releaseDate'])
-        : null,
+      source: json['source'] ?? 'itunes',
+      releaseDate: json['releaseDate'] != null
+          ? DateTime.parse(json['releaseDate'])
+          : null,
     );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'title': title,
+      'artist': artist,
+      'album': album,
+      'thumbnail': thumbnail,
+      'url': url,
+      'duration': duration,
+      'source': source,
+      if (releaseDate != null) 'releaseDate': releaseDate!.toIso8601String(),
+    };
   }
 }
 
@@ -60,9 +74,7 @@ class Playlist {
       id: json['_id'],
       name: json['name'],
       description: json['description'] ?? '',
-      tracks: (json['tracks'] as List)
-          .map((t) => Track.fromJson(t))
-          .toList(),
+      tracks: (json['tracks'] as List).map((t) => Track.fromJson(t)).toList(),
       thumbnail: json['thumbnail'],
       isPublic: json['isPublic'] ?? false,
     );
